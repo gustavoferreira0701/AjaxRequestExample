@@ -29,7 +29,12 @@ namespace AjaxExample
         {
             try
             {
-                Pessoa p = new Pessoa { Nome = nome, Telefone = telefone, Endereco = endereco, Idade = idade };
+                Pessoa p = new Pessoa { 
+                    Nome = nome, 
+                    Telefone = telefone, 
+                    Endereco = endereco, 
+                    Idade = idade 
+                };
             }
             catch (Exception ex)
             {
