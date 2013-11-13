@@ -1,0 +1,63 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    
+</head>
+<body>
+
+    <ul>
+        <li>
+            <label>Nome: </label>
+            <input type="text" id="txtNome" /></li>
+
+        <li>
+            <label>Telefone: </label>
+            <input type="text" id="txtTelefone" /></li>
+
+        <li>
+            <label>Endereço: </label>
+            <input type="text" id="txtEndereco" /></li>
+
+        <li>
+            <label>Idade: </label>
+            <input type="text" id="txtIdade" /></li>
+
+        <li>
+            <a id="btnEnviar">Enviar Dados</a></li>
+
+    </ul>
+    <script type="text/javascript" src="scripts/jquery-1.10.2.js"></script>
+    <script type="text/javascript">
+
+        $('#btnEnviar').click(function () {
+            var nome = $('#txtNome').val();
+            var telefone = $('#txtTelefone').val();
+            var endereco = $('#txtEndereco').val();
+            var idade = $('#txtIdade').val();
+
+            /*
+            * A url utilizada será o endereco da página aonde está o método seguido de '/' e o nome do método que irá receber as informações.
+            * neste exemplo só utilizei tipos primitivos[int/string]
+            */
+            $.ajax({
+                type: 'POST',
+                url: 'http://localhost:9128/pagina.aspx/MetodoSimples',
+                data: '{ nome: "' + nome
+                   + '" ,telefone: "' + telefone
+                   + '", endereco: "' + endereco
+                   + '" , idade: ' + idade +  '}',
+                contentType: "application/json; charset=utf-8",
+                dataTpe: "Json"
+            }).done(function (data) {
+
+            }).fail(function (data) {
+
+            });
+
+        });
+
+    </script>
+
+</body>
+</html>
