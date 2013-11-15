@@ -50,6 +50,10 @@
                 contentType: "application/json; charset=utf-8",
                 dataTpe: "Json"
             }).done(function (data) {
+                if (data) {
+                    var d = JSON.parse(data.d);
+                    console.log(d);
+                }
 
             }).fail(function (data) {
 
