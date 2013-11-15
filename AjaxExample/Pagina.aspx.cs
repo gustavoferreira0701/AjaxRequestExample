@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Script.Serialization;
 using System.Web.Services;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -25,16 +26,24 @@ namespace AjaxExample
         /// <param name="endereco"></param>
         /// <param name="idade"></param>
         [WebMethod]
-        public static void MetodoSimples(string nome, string telefone, string endereco, int idade)
+        public static string MetodoSimples(string nome, string telefone, string endereco, int idade)
         {
             try
             {
+                JavaScriptSerializer js = new JavaScriptSerializer();
+
                 Pessoa p = new Pessoa { 
                     Nome = nome, 
                     Telefone = telefone, 
                     Endereco = endereco, 
                     Idade = idade 
                 };
+
+                /*Para o envio das informações transformo todas em string e depois uso o método JSON.parse 
+                 * na página que vai receber as informações.
+                */
+
+                return js.Serialize(p);
             }
             catch (Exception ex)
             {
